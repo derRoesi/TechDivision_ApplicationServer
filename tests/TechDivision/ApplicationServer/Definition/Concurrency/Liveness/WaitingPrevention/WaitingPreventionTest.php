@@ -37,13 +37,13 @@ require_once "WaitingTestWakingThread.php";
 require_once "DefinitionTestContainer.php";
 class WaitingPreventionTest extends \PHPUnit_Framework_TestCase
 {
-    protected $threadA;
-    protected $threadB;
+    protected $waitingThread;
+    protected $waikingThread;
 
     protected $container;
 
     public function setUp()
     {
-
+        $this->waitingThread = new WaitingTestWaitingThread();
     }
 }

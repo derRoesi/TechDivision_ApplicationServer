@@ -81,18 +81,27 @@ class WriteWriteWritingThread extends \Thread
     public function run()
     {
         while (true) {
-            $currentTime = microtime($this->returnMicrotimeAsFloat);
-
-            if ($this->startingTime <= $currentTime && $currentTime <= $this->endingTime) {
+            if ($this->isInRunningTime()) {
                 \Mutex::lock($this->mutex);
                 for ($i = 0; $i < $this->numberOfSignsToBeWroteInARow; $i++) {
                     $this->container[$this->key] .= $this->sign;
                 }
                 \Mutex::unlock($this->mutex);
-            } elseif ($currentTime > $this->endingTime) {
+            } elseif ($this->runningTimeIsOver()) {
                 break;
             }
         }
     }
 
+    protected function isInRunningTime()
+    {
+        $currentTime = microtime($this->returnMicrotimeAsFloat);
+        return $this->startingTime <= $currentTime && $currentTime <= $this->endingTime;
+    }
+
+    protected function runningTimeIsOver()
+    {
+        $currentTime = microtime($this->returnMicrotimeAsFloat);
+        return $currentTime > $this->endingTime;
+    }
 }

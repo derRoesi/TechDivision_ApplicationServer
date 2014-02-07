@@ -19,7 +19,7 @@ namespace TechDivision\ApplicationServer;
 /**
  * TechDivision\ApplicationServer\WritingThread
  *
- * This class describes a thread, that reades from a container.
+ * This class describes a thread, that reads from a container.
  *
  * @category   AppServer
  * @package    TechDivision

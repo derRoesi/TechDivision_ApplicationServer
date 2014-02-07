@@ -1,6 +1,6 @@
 <?php
 /**
- * This file contains the class ReadWriteConflictPreventionTest.
+ * TechDivision\ApplicationServer\ReadWriteConflictPreventionTest
  *
  * PHP version 5
  *
@@ -20,7 +20,6 @@ require_once "Mock/DefinitionTestContainer.php";
 require_once "Mock/ReadingThread.php";
 require_once "Mock/WritingThread.php";
 /**
- * TechDivision\ApplicationServer\ReadWriteConflictPreventionTest
  *
  * This testcase generates a situation where a thread is reading a resource while another tries to
  * write to the read resource and vice versa.
@@ -62,8 +61,6 @@ class ReadWriteConflictPreventionTest extends \PHPUnit_Framework_TestCase
     {
         $this->writingThread->start();
         $this->readingThread->start();
-
-        var_dump($this->container);
 
         $this->assertEquals($this->container[$this->resultKey], $this->expected);
     }

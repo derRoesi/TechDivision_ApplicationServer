@@ -33,7 +33,7 @@ namespace TechDivision\ApplicationServer;
  */
 
 
-class DefinitionTestThread extends \Thread
+class LockingPreventionTestThread extends \Thread
 {
     protected $container;
     protected $key;

@@ -28,6 +28,7 @@ class LockingPreventionTest extends \PHPUnit_Framework_TestCase
      */
     protected $threadA;
     protected $threadB;
+
     protected $containerA;
     protected $containerB;
 
@@ -42,8 +43,8 @@ class LockingPreventionTest extends \PHPUnit_Framework_TestCase
 
         $this->containerA = new DefinitionTestContainer();
         $this->containerB = new DefinitionTestContainer();
-        $this->threadA = new DefinitionTestThread($this->containerA, $this->keyA, $this->mutex, 10);
-        $this->threadB = new DefinitionTestThread($this->containerB, $this->keyB, $this->mutex, 10);
+        $this->threadA = new LockingPreventionTestThread($this->containerA, $this->keyA, $this->mutex, 10);
+        $this->threadB = new LockingPreventionTestThread($this->containerB, $this->keyB, $this->mutex, 10);
     }
 
     public function testLockingPrevention()
@@ -63,8 +64,6 @@ class LockingPreventionTest extends \PHPUnit_Framework_TestCase
                 }
             }
         }
-
         $this->assertFalse($lockingDetected);
     }
 }
-
